@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name" translatable="false">Journalize </string>
+    <string name="error_accured">Es ist ein Fehler aufgetreten</string>
+    <string name="logout_successful">Erfolgreich abgemeldet</string>
+    <string name="log_out">Abmelden</string>
+    <string name="add_new_day">Neuen Tag hinzufügen</string>
+    <string name="save">Speichern</string>
+    <string name="greeting">Herzlich Wilkommen</string>
+    <string name="good_morning">Guten Morgen</string>
+    <string name="good_afternoon">Guten Tag</string>
+    <string name="good_evening">Guten Abend</string>
+    <string name="log_in">Anmelden</string>
+    <string name="logo_description">Journalize Logo</string>
+    <string name="title_for_day">Überschrift für den Tag</string>
+    <string name="dear_diary">Liebes Tagebuch, </string>
+    <string name="delete">Tag löschen</string>
+    <string name="delete_day_prompt">Möchten Sie wirklich den Tag löschen?</string>
+    <string name="log_out_prompt">Möchten Sie sich wirklich abmelden?</string>
+    <string name="cancel">Nein</string>
+    <string name="delete_successful">Tag wurde gelöscht</string>
+</resources>

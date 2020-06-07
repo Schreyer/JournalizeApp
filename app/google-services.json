@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "774361200374",
+    "firebase_url": "https://journalizeapp.firebaseio.com",
+    "project_id": "journalizeapp",
+    "storage_bucket": "journalizeapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:774361200374:android:5980a5b82c038e798d9ed7",
+        "android_client_info": {
+          "package_name": "at.dev.msd.journalizeapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "774361200374-8ktdaas696s2mm8m2cr3ha3j8elgmu8m.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyANQz7lIBLbW3dWH4s0fzIObtI-_h83SVA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "774361200374-8ktdaas696s2mm8m2cr3ha3j8elgmu8m.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
