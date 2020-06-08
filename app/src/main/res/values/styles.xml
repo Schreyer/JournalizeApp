@@ -8,7 +8,6 @@
         <item name="colorAccent">@color/colorAccent</item>
 
         <item name="actionMenuTextColor">@color/dark</item>
-        <!--        <item name="textColorPrimary">da</item>-->
     </style>
 
 

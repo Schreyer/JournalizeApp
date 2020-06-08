@@ -14,7 +14,7 @@ import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
-import kotlinx.android.synthetic.main.edit_day.*
+import kotlinx.android.synthetic.main.activity_edit_day.*
 import java.io.Serializable
 import java.util.*
 
@@ -22,14 +22,14 @@ class DetailActivity : AppCompatActivity() {
     @RequiresApi(Build.VERSION_CODES.O)
 
     var auth: FirebaseAuth = FirebaseAuth.getInstance()
-    var db = FirebaseFirestore.getInstance()
-    var userId = auth.currentUser!!.uid
-    lateinit var documentId: String
+    private var db = FirebaseFirestore.getInstance()
+    private var userId = auth.currentUser!!.uid
+    private lateinit var documentId: String
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.edit_day)
+        setContentView(R.layout.activity_edit_day)
 
         var paragraph: CharSequence
         var title: CharSequence
@@ -65,13 +65,13 @@ class DetailActivity : AppCompatActivity() {
                 .addOnSuccessListener { document ->
                     val data = document.data!!
                     day = data["day"].toString()
-                    oldDay = data["day"].toString()
+                    oldDay = day
 
                     month = data["month"].toString()
-                    oldMonth = data["month"].toString()
+                    oldMonth = month
 
                     year = data["year"].toString()
-                    oldYear = data["year"].toString()
+                    oldYear = year
 
                     title = data["title"].toString()
                     paragraph = data["paragraph"].toString()
@@ -93,7 +93,6 @@ class DetailActivity : AppCompatActivity() {
                     day = dayOfMonth.toString().padStart(2, '0')
                     month = (monthOfYear + 1).toString().padStart(2, '0')
                     year = yearOfYear.toString()
-                    println("+++++++++++Date picked: $month")
                     setDate(day, month, year)
 //                    btnSave.visibility = View.VISIBLE
                 },
@@ -139,7 +138,11 @@ class DetailActivity : AppCompatActivity() {
                 .set(newDay)
                 .addOnSuccessListener {
                     val toast =
-                        Toast.makeText(applicationContext, "Tag wurde gespeichert.", duration)
+                        Toast.makeText(
+                            applicationContext,
+                            getString(R.string.save_successful),
+                            duration
+                        )
                     toast.show()
                     val intent = Intent(this, HomeActivity::class.java)
                     startActivity(intent)
@@ -147,7 +150,7 @@ class DetailActivity : AppCompatActivity() {
                     val toast =
                         Toast.makeText(
                             applicationContext,
-                            "Es ist ein Fehler aufgetreten. Bitte versuch es erneut.",
+                            getString(R.string.error_accured),
                             duration
                         )
                     toast.show()

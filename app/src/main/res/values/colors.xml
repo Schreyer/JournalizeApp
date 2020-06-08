@@ -3,7 +3,6 @@
     <color name="colorPrimary">#31456a</color>
     <color name="colorPrimaryDark">#EAEBF3</color>
     <color name="colorAccent">#31456a</color>
-    <!--    <color name="actionbar_text">#31456a</color>-->
 
     <color name="background">#EAEBF3</color>
     <color name="dark">#31456A</color>
@@ -14,30 +13,5 @@
 
     <color name="neomorph_highlight_color">#FFFFFF</color>
     <color name="neomorph_shadow_color">#B2B3B6</color>
-
-
-    <!--    <color name="highlight">#e1e6ec</color>-->
-    <!--    <color name="shadow_color">#d9dbde</color>-->
-
-
-    <!--    &lt;!&ndash;    Light UI&ndash;&gt;-->
-    <!--    <color name="light_background">#EAEBF3</color>-->
-    <!--    <color name="light_shadow_dark">#BDBEBF</color>-->
-
-    <!--    <color name="dark_background">#EAEBF3</color>-->
-    <!--    <color name="dark_shadow_dark">#BDBEBF</color>-->
-
-
-    <!--    &lt;!&ndash;    Dark UI&ndash;&gt;-->
-    <!--    <color name="Light">#e1e6ec</color>-->
-    <!--    <color name="white">#FFFFFF</color>-->
-    <!--    <color name="semi_white">#f8f7f7</color>-->
-
-
-    <!--    <color name="Dark">#191a1e</color>-->
-    <!--    <color name="yellow">#fcc73b</color>-->
-    <!--    <color name="black">#000</color>-->
-    <!--    <color name="light_white">#4dffffff</color>-->
-
 
 </resources>

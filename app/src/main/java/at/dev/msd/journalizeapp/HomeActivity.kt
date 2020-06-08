@@ -98,20 +98,7 @@ class HomeActivity : AppCompatActivity() {
             DialogInterface.OnClickListener { _, which ->
                 when (which) {
                     DialogInterface.BUTTON_POSITIVE -> {
-                        AuthUI.getInstance()
-                            .signOut(this)
-                            .addOnCompleteListener {
-                                val duration = Toast.LENGTH_SHORT
-                                val toast =
-                                    Toast.makeText(
-                                        applicationContext,
-                                        getString(R.string.logout_successful),
-                                        duration
-                                    )
-                                toast.show()
-                                val intent = Intent(this, MainActivity::class.java)
-                                startActivity(intent)
-                            }
+                        logOut()
                     }
                     DialogInterface.BUTTON_NEGATIVE -> {
                     }
@@ -119,8 +106,25 @@ class HomeActivity : AppCompatActivity() {
             }
         builder.setMessage(getString(R.string.log_out_prompt))
             .setPositiveButton(getString(R.string.log_out), dialogClickListener)
-            .setNegativeButton(getString(R.string.cancel), dialogClickListener)
+            .setNegativeButton(getString(R.string.error_accured), dialogClickListener)
             .show()
+    }
+
+    private fun logOut() {
+        AuthUI.getInstance()
+            .signOut(this)
+            .addOnCompleteListener {
+                val duration = Toast.LENGTH_SHORT
+                val toast =
+                    Toast.makeText(
+                        applicationContext,
+                        getString(R.string.logout_successful),
+                        duration
+                    )
+                toast.show()
+                val intent = Intent(this, MainActivity::class.java)
+                startActivity(intent)
+            }
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
