@@ -106,7 +106,7 @@ class HomeActivity : AppCompatActivity() {
             }
         builder.setMessage(getString(R.string.log_out_prompt))
             .setPositiveButton(getString(R.string.log_out), dialogClickListener)
-            .setNegativeButton(getString(R.string.error_accured), dialogClickListener)
+            .setNegativeButton(getString(R.string.cancel), dialogClickListener)
             .show()
     }
 
