@@ -8,7 +8,6 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
@@ -82,7 +81,7 @@ class HomeActivity : AppCompatActivity() {
                     val rvAdapter = RvAdapter(dataList, this)
                     recyclerView.adapter = rvAdapter
 
-                    val loadingCircle = findViewById<ProgressBar>(R.id.loadingCircle)
+
                     loadingCircle.visibility = View.GONE
                 }
 

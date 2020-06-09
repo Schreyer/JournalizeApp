@@ -117,7 +117,7 @@ class DetailActivity : AppCompatActivity() {
 
             val userId = auth.currentUser!!.uid
 
-            val db = FirebaseFirestore.getInstance()
+//            val db = FirebaseFirestore.getInstance()
             val duration = Toast.LENGTH_SHORT
             val newDay: HashMap<String, Serializable> = hashMapOf(
                 "id" to documentId,
