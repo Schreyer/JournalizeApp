@@ -86,6 +86,7 @@ class HomeActivity : AppCompatActivity() {
 
             }
             .addOnCompleteListener {
+
                 loadingCircle.visibility = View.GONE
             }
     }

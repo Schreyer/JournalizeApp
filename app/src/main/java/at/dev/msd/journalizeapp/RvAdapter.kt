@@ -30,7 +30,6 @@ class RvAdapter(private val userList: ArrayList<Model>, private var context: Con
 
         holder.title.text = userList[position].title
         holder.dayAndMonth.text = "$day.$month"
-//        holder.dayAndMonth.text = Resources.getSystem().getString(R.string.date, day, month)
         holder.year.text = userList[position].year
         holder.documentId = userList[position].id
 
@@ -62,7 +61,6 @@ class RvAdapter(private val userList: ArrayList<Model>, private var context: Con
                 intent.putExtra(DOCUMENT_ID_KEY, documentId)
                 itemView.context.startActivity(intent)
             }
-
         }
     }
 }

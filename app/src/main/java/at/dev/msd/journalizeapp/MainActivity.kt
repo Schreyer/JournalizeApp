@@ -45,7 +45,6 @@ class MainActivity : AppCompatActivity() {
                 RC_SIGN_IN
             )
         }
-
     }
 
     private fun loadLogo() {
@@ -64,8 +63,6 @@ class MainActivity : AppCompatActivity() {
         super.onActivityResult(requestCode, resultCode, data)
 
         if (requestCode == RC_SIGN_IN) {
-//            val response = IdpResponse.fromResultIntent(data)
-
             if (resultCode == Activity.RESULT_OK) {
                 intentHome()
             } else {

@@ -3,7 +3,6 @@ package at.dev.msd.journalizeapp
 import android.app.AlertDialog
 import android.app.DatePickerDialog
 import android.content.DialogInterface
-import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.view.Menu
@@ -46,16 +45,10 @@ class DetailActivity : AppCompatActivity() {
         var oldGuid = ""
 
         documentId = intent.getStringExtra(RvAdapter.ViewHolder.DOCUMENT_ID_KEY)!!
-//        auth = FirebaseAuth.getInstance()
-
-        //get documentId
-//        var documentId = intent.getStringExtra(RvAdapter.ViewHolder.DOCUMENT_ID_KEY)
 
         if (documentId == "") {
             // creating new day
-//            println("--------------month: $month")
             setDate(day, month, year)
-
         } else {
             // editing existing day
             userId = auth.currentUser!!.uid
@@ -94,14 +87,12 @@ class DetailActivity : AppCompatActivity() {
                     month = (monthOfYear + 1).toString().padStart(2, '0')
                     year = yearOfYear.toString()
                     setDate(day, month, year)
-//                    btnSave.visibility = View.VISIBLE
                 },
                 year.toInt(),
                 month.toInt() - 1,
                 day.toInt()
             )
             dpd.show()
-//            btnSave.visibility = View.GONE
         }
         btnSave.setOnClickListener {
             title = findViewById<TextView>(R.id.txtTitle).text
@@ -117,8 +108,6 @@ class DetailActivity : AppCompatActivity() {
 
             val userId = auth.currentUser!!.uid
 
-//            val db = FirebaseFirestore.getInstance()
-            val duration = Toast.LENGTH_SHORT
             val newDay: HashMap<String, Serializable> = hashMapOf(
                 "id" to documentId,
                 "title" to title.toString(),
@@ -127,38 +116,19 @@ class DetailActivity : AppCompatActivity() {
                 "month" to month,
                 "year" to year
             )
-//            val date = hashMapOf(
-//                "day" to day,
-//                "month" to month,
-//                "year" to year
-//            )
-//
-//            user["date"] = date
+
             db.collection(userId).document(documentId)
                 .set(newDay)
                 .addOnSuccessListener {
-                    val toast =
-                        Toast.makeText(
-                            applicationContext,
-                            getString(R.string.save_successful),
-                            duration
-                        )
-                    toast.show()
+                    showToast(getString(R.string.save_successful))
                     finish()
                 }.addOnFailureListener {
-                    val toast =
-                        Toast.makeText(
-                            applicationContext,
-                            getString(R.string.error_accured),
-                            duration
-                        )
-                    toast.show()
+                    showToast(getString(R.string.error_accured))
                 }
         }
     }
 
     private fun setDate(day: String, month: String, year: String) {
-//        txtDate.text = ("$day.$month.$year")
         (this as AppCompatActivity).supportActionBar?.title = ("$day.$month.$year")
     }
 
@@ -166,15 +136,7 @@ class DetailActivity : AppCompatActivity() {
         db.collection(userId).document(documentId)
             .delete()
             .addOnSuccessListener {
-                val duration = Toast.LENGTH_SHORT
-                val toast =
-                    Toast.makeText(
-                        applicationContext,
-                        getString(R.string.delete_successful),
-                        duration
-                    )
-                toast.show()
-
+                showToast(getString(R.string.delete_successful))
                 finish()
             }
     }
@@ -210,5 +172,16 @@ class DetailActivity : AppCompatActivity() {
             }
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    private fun showToast(message: String) {
+        val duration = Toast.LENGTH_SHORT
+        val toast =
+            Toast.makeText(
+                applicationContext,
+                message,
+                duration
+            )
+        toast.show()
     }
 }
