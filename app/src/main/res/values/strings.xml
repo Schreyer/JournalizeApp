@@ -16,6 +16,7 @@
     <string name="date">%1$s..%2$s</string>
     <string name="title_for_day">Überschrift für den Tag</string>
     <string name="dear_diary">Liebes Tagebuch, </string>
+    <string name="addFirstDay">Erstelle deinen ersten Eintrag indem du auf den Button tipst</string>
 
     <!--delete prompt-->
     <string name="delete">Tag löschen</string>

@@ -8,6 +8,9 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.view.animation.AlphaAnimation
+import android.view.animation.Animation
+import android.view.animation.LinearInterpolator
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
@@ -24,12 +27,19 @@ import kotlin.collections.ArrayList
 class HomeActivity : AppCompatActivity() {
 
     @RequiresApi(Build.VERSION_CODES.O)
+    var noEntries = false
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
         val auth = FirebaseAuth.getInstance()
 
         val user = auth.currentUser?.displayName.toString()
+
+        if (noEntries) {
+            txtAddFirstDay.visibility = View.VISIBLE
+        }
+        val animation = animationForButton()
+        btnNewDay.startAnimation(animation)
 
         txtUserName.text = user
 
@@ -66,6 +76,9 @@ class HomeActivity : AppCompatActivity() {
         db.collection(userId)
             .get()
             .addOnSuccessListener { result ->
+                if (result === null) {
+                    noEntries = true
+                }
                 for (document in result) {
                     val data = document.data
                     val day = data["day"].toString().padStart(2, '0')
@@ -82,6 +95,8 @@ class HomeActivity : AppCompatActivity() {
 
 
                     loadingCircle.visibility = View.GONE
+                    btnNewDay.clearAnimation()
+                    txtAddFirstDay.visibility = View.GONE
                 }
 
             }
@@ -148,5 +163,20 @@ class HomeActivity : AppCompatActivity() {
 
     override fun onBackPressed() {
         showLogOutDialogBox()
+    }
+
+    private fun animationForButton(): Animation {
+        val animation: Animation =
+            AlphaAnimation(1f, 0f) // Change alpha from fully visible to invisible
+
+        animation.duration = 1000
+
+        animation.interpolator = LinearInterpolator() // do not alter animation rate
+
+        animation.repeatCount = Animation.INFINITE
+
+        animation.repeatMode =
+            Animation.REVERSE // Reverse animation at the end so the button will fade back in
+        return animation
     }
 }
