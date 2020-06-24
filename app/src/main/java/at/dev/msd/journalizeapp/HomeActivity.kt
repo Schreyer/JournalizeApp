@@ -34,8 +34,7 @@ class HomeActivity : AppCompatActivity() {
 
         val user = auth.currentUser?.displayName.toString()
 
-        val animation = animationForButton()
-        btnNewDay.startAnimation(animation)
+        btnNewDay.startAnimation(animationForButton())
 
         txtUserName.text = user
 
@@ -91,11 +90,12 @@ class HomeActivity : AppCompatActivity() {
 
 
                 loadingCircle.visibility = View.GONE
-                btnNewDay.clearAnimation()
                 if (dataList.size == 0){
                     txtAddFirstDay.visibility = View.VISIBLE
+                    btnNewDay.startAnimation(animationForButton())
                 } else {
                     txtAddFirstDay.visibility = View.GONE
+                    btnNewDay.clearAnimation()
                 }
 
             }
