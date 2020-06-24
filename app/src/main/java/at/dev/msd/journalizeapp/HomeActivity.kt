@@ -56,11 +56,10 @@ class HomeActivity : AppCompatActivity() {
         //recycler view
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
         recyclerView.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
-
-        loadDataFromServer(auth)
     }
 
     private fun loadDataFromServer(auth: FirebaseAuth) {
+        loadingCircle.visibility = View.VISIBLE
         val dataList = ArrayList<Model>()
         val db = FirebaseFirestore.getInstance()
         val userId = auth.currentUser!!.uid
@@ -121,8 +120,7 @@ class HomeActivity : AppCompatActivity() {
                         duration
                     )
                 toast.show()
-                val intent = Intent(this, MainActivity::class.java)
-                startActivity(intent)
+                finish()
             }
     }
 
@@ -132,6 +130,12 @@ class HomeActivity : AppCompatActivity() {
         return true
     }
 
+    override fun onResume() {
+        super.onResume()
+        val auth = FirebaseAuth.getInstance()
+        loadDataFromServer(auth)
+    }
+
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.logOut -> {
@@ -139,5 +143,9 @@ class HomeActivity : AppCompatActivity() {
             }
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    override fun onBackPressed() {
+        showLogOutDialogBox()
     }
 }

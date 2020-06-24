@@ -144,8 +144,7 @@ class DetailActivity : AppCompatActivity() {
                             duration
                         )
                     toast.show()
-                    val intent = Intent(this, HomeActivity::class.java)
-                    startActivity(intent)
+                    finish()
                 }.addOnFailureListener {
                     val toast =
                         Toast.makeText(
@@ -176,8 +175,7 @@ class DetailActivity : AppCompatActivity() {
                     )
                 toast.show()
 
-                val intent = Intent(this, HomeActivity::class.java)
-                startActivity(intent)
+                finish()
             }
     }
 
