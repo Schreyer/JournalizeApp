@@ -90,14 +90,16 @@ class HomeActivity : AppCompatActivity() {
                     dataList.add(
                         Model(id, title, day, month, year)
                     )
-                    val rvAdapter = RvAdapter(dataList, this)
-                    recyclerView.adapter = rvAdapter
 
-
-                    loadingCircle.visibility = View.GONE
-                    btnNewDay.clearAnimation()
-                    txtAddFirstDay.visibility = View.GONE
                 }
+
+                val rvAdapter = RvAdapter(dataList, this)
+                recyclerView.adapter = rvAdapter
+
+
+                loadingCircle.visibility = View.GONE
+                btnNewDay.clearAnimation()
+                txtAddFirstDay.visibility = View.GONE
 
             }
             .addOnCompleteListener {
