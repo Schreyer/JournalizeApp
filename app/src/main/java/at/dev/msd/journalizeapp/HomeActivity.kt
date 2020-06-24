@@ -27,7 +27,6 @@ import kotlin.collections.ArrayList
 class HomeActivity : AppCompatActivity() {
 
     @RequiresApi(Build.VERSION_CODES.O)
-    var noEntries = false
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
@@ -35,9 +34,6 @@ class HomeActivity : AppCompatActivity() {
 
         val user = auth.currentUser?.displayName.toString()
 
-        if (noEntries) {
-            txtAddFirstDay.visibility = View.VISIBLE
-        }
         val animation = animationForButton()
         btnNewDay.startAnimation(animation)
 
@@ -76,9 +72,6 @@ class HomeActivity : AppCompatActivity() {
         db.collection(userId)
             .get()
             .addOnSuccessListener { result ->
-                if (result === null) {
-                    noEntries = true
-                }
                 for (document in result) {
                     val data = document.data
                     val day = data["day"].toString().padStart(2, '0')
@@ -99,7 +92,11 @@ class HomeActivity : AppCompatActivity() {
 
                 loadingCircle.visibility = View.GONE
                 btnNewDay.clearAnimation()
-                txtAddFirstDay.visibility = View.GONE
+                if (dataList.size == 0){
+                    txtAddFirstDay.visibility = View.VISIBLE
+                } else {
+                    txtAddFirstDay.visibility = View.GONE
+                }
 
             }
             .addOnCompleteListener {
