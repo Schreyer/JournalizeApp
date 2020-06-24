@@ -2,11 +2,13 @@ package at.dev.msd.journalizeapp
 
 import android.app.AlertDialog
 import android.app.DatePickerDialog
+import android.content.Context
 import android.content.DialogInterface
 import android.os.Build
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.view.inputmethod.InputMethodManager
 import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.RequiresApi
@@ -49,6 +51,10 @@ class DetailActivity : AppCompatActivity() {
         if (documentId == "") {
             // creating new day
             setDate(day, month, year)
+            txtTitle.requestFocus()
+            val imm: InputMethodManager =
+                getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            imm.showSoftInput(txtTitle, InputMethodManager.SHOW_IMPLICIT)
         } else {
             // editing existing day
             userId = auth.currentUser!!.uid
