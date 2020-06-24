@@ -122,7 +122,7 @@ class HomeActivity : AppCompatActivity() {
                     )
                 toast.show()
                 val intent = Intent(this, MainActivity::class.java)
-                startActivity(intent)
+                finish()
             }
     }
 
@@ -139,5 +139,9 @@ class HomeActivity : AppCompatActivity() {
             }
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    override fun onBackPressed() {
+        showLogOutDialogBox()
     }
 }
